@@ -20,6 +20,10 @@ Enjoy!
 
 You've to find out [your local IP](https://lifehacker.com/how-to-find-your-local-and-external-ip-address-5833108) and type that into the url bar with :8080 as port behind.
 
+**How can I change the directory of my data?**
+
+Either remove that folder and the program should ask you itself, or remove the config file / change it's content located at your home directory/.AntonioNoack/RSQGPlus/config.txt.
+
 **How can I thank you?**
 
 Maybe donate a bit, which is equal to making me a little present / paying me a coffee (not liking coffee yet XD) / chocolate bar (liking that a lot better :D) :)
