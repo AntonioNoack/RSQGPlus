@@ -22,6 +22,6 @@ You've to find out your local IP [https://lifehacker.com/how-to-find-your-local-
 
 **How can I thank you?**
 
-Maybe donate a bit, which is equal to making me a little present / paying me a coffee / chocolate bar :)
+Maybe donate a bit, which is equal to making me a little present / paying me a coffee (not liking coffee yet XD) / chocolate bar (liking that a lot better :D) :)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](antonio-noack@gmx.de)
