@@ -1,0 +1,348 @@
+<html><head>
+	<!-- todo statistical dating... stamet -->
+	<meta charset="UTF-8"/>
+	<title>Good old G+, Antonio Noack</title>
+	<meta name="viewport" content="width=1024" initial-scale="2.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://phychi.com/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="https://phychi.com/img/fav128.png" sizes="128x128">
+	<link rel="icon" type="image/png" href="https://phychi.com/img/fav64.png" sizes="64x64">
+	<link rel="icon" type="image/png" href="https://phychi.com/img/fav32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://phychi.com/img/fav16.png" sizes="16x16">
+	<link rel="manifest" href="https://phychi.com/img/manifest.json">
+	<meta name="theme-color" content="#a07c68"><!--toolbar color is changeable O.o-->
+	<meta name="author" content="Antonio Noack"/>
+	<style>
+		* {
+			margin: 0px;
+			font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+		}
+		
+		a {
+			text-decoration: none;
+			/*color: #49e7ff;*/
+			color: #f47f20;
+		}
+		
+		.a {
+			color: #f47f20;
+			font-size: 22px;
+			font-weight: 500;
+			text-align: right;
+			padding-right: 8px;
+		}
+		
+		.m_b {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: break-all;
+			white-space: nowrap;
+			font-size: 14px;
+			font-weight: 500;
+			padding: 15px;
+		}
+		
+		.m_b2 {
+			color: #777;
+			font-size: 14px;
+			font-weight: normal;
+			padding-left: 20px;
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+		
+		.m_b:hover, .m_b2:hover {
+			background: #ddd;
+		}
+		
+		.e_i {
+			width: 36px;
+			height: 36px;
+		}
+		
+		.e_n {
+			font-size: 18px;
+			color: #444;
+			padding-left: 10px;
+			position: relative;
+			top: -10px;
+			display: inline-block;
+		}
+		
+		.e_n2 {
+			font-size: 14px;
+			color: #999;
+			padding-left: 5px;
+			position: relative;
+			top: -10px;
+			display: inline-block;
+		}
+		
+		.e_d {
+			font-size: 14px;
+			color: #666;
+			float: right;
+			display: inline-block;
+		}
+		
+		.e_t {
+			padding-top: 16px;
+			padding-bottom: 16px;
+			font-size: 14px;
+			word-wrap: break-word;
+			/*color: #222;*/
+			color: #000;
+			display: block;
+		}
+		
+		.e_p {
+			width: calc(100% + 32px);
+			height: auto;
+			margin-left: -16px;
+			cursor: pointer;
+		}
+		
+		.e_v {
+			border: none;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+		
+		.e_vx {
+			background-image: url('img/youtubeOff.png');
+			background-size: cover;
+			cursor: pointer;
+		}
+		.e_vx:hover {
+			background-image: url('img/youtubeOn.png');
+		}
+		
+		.e_lk {
+			width: calc(100% + 16px);
+			height: auto;
+			margin-left: -16px;
+			padding: 8px;
+			text-align: center;
+			font-size: 18px;
+			font-weight: 500;
+			background: #333;
+			display: inline-block;
+		}
+		
+		.e_a {
+			margin-left: -16px;
+			width: calc(100% + 32px);
+			margin-bottom: -16px;
+			background: #f2f2f2;
+		}
+		
+		.e_ai {
+			border: none;
+			padding: 16px;
+			width: calc(100% - 40px);
+			font-size: 14px;
+			color: #222;
+			display: inline-block;
+			background: #f2f2f2;
+		}
+		
+		.e_l {
+			width: 36px;
+			height: 36px;
+			border: 20px;
+			border-radius: 20px;
+			display: inline-block;
+			background: #ddd;
+			cursor: pointer;
+		}
+		
+		.e_l:hover {
+			box-shadow: 2px 2px 2px #666;
+		}
+		
+		.e_lt {
+			margin-top: 8px;
+			text-align: center;
+			cursor: pointer;
+		}
+		
+		.e_c_c {
+			padding: 10px;
+			display: inline-block;
+		}
+		
+		.e_c {
+			padding-left: 8px;
+			padding-right: 8px;
+		}
+		
+		.e_c_n {
+			font-size: 14px;
+			color: #333;
+			display: inline-block;
+			font-weight: 500;
+		}
+		
+		.e_c_t {
+			padding-top: 4px;
+			font-size: 14px;
+			color: #222;
+			display: block;
+		}
+		
+		.e_c_d {
+			font-size: 14px;
+			color: #666;
+			float: right;
+			padding-top: 8px;
+		}
+		
+		
+		.e {
+			padding: 12px;
+			width: calc(100% - 20px);
+		}
+		
+		.ec {
+			padding: 16px;
+			background: #fff;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+		}
+		
+		.rs {
+			width: calc(100% + 32px);
+			border-top: 1px solid #ddd;
+			margin-top: 16px;
+			margin-left: -16px;
+			margin-bottom: -24px;
+			background: #f2f2f2;
+		}
+		
+		.i {
+			float: left;
+		}
+		
+		#menu {
+			margin-top: 87px;
+			width: 11%;
+			background: #f2f2f2;
+			position: fixed;
+		}
+		
+		#main {
+			margin-top: 83px;
+			position: absolute;
+			left: 11%;
+			width: 89%;
+		}
+		
+		.mn {
+			/*display: inline-block;*/
+			/*overflow-y: auto;*/
+			float: left;
+			width: 33.333%;
+		}
+		
+		@keyframes goneLeft {
+			from {margin-left: 0;}
+			to {margin-left: -11vw;}
+		}
+		
+		@keyframes goneLeftGoBack {
+			from {margin-left: -11vw;}
+			to {margin-left: 0%;}
+		}
+		
+		body {
+			background: #f2f2f2;
+		}
+		
+		.sw {
+			width: 33.3%;
+		}
+		
+		#h {
+			background: #fff;
+			width: 100%;
+			position: fixed;
+			padding: 8px;
+			box-shadow: 0px 0px 8px #666;
+		}
+		
+		#search {
+			border: none;
+			font-size: 26px;
+			padding: 5px;
+			margin-left: 340px;
+		}
+		
+		#toggleMenue {
+			padding: 5px;
+			width: 36px;
+			height: 36px;
+		}
+		
+		#t0 {
+			position: fixed;
+		}
+		
+	</style>
+	
+</head><body>
+	<div id="menu" class="i">
+		<!-- todo those buttons ... -->
+		<div class="m_b">Übersicht</div>
+		<div class="m_b">Entdecken</div>
+		<div class="m_b">Communities</div><!--
+			vielleicht eine Übersicht über die Communities, in die ich gepostst habe?...
+		-->
+		<!--
+			<div class="m_b">Profil</div>
+			unnötig, solange man sich nicht einloggen kann
+		-->
+		<div class="m_b">Personen</div><!--
+			können wir machen :), eine Liste der Personen, die mit mir interargiert haben :D
+			ich muss aber noch meine gegebenen Likes und so mit einbeziehen... oje... oder? naja...
+		-->
+		<!-- zeigt die Ergebnisse nach meinen Kreisdefinitionen -> privat und deren Inhalt habe ich zum Großteil sowieso nicht...
+			<div class="m_b">Kreis-Streams</div>
+		-->
+		<div class="m_b">Benachrichtigungen</div>
+		<div style="height:10px;border-top:1px solid #999;margin:5px;"></div>
+		<div>
+			<div class="m_b2">Einstellungen</div>
+			<div class="m_b2">Wünsche</div>
+			<div class="m_b2">Help!?</div>
+			<div class="m_b2">&copy; Antonio Noack Dez'2018/Jan'2019 und das verstorbene G+, dessen Profil ich mir hiermit rette :).<br><br>Hilfe gibt es auf <a href="https://anionoa.phychi.com/+/howTo">das HowTo</a> oder <a href="https://phychi.com/impressum">schreib mir</a> ;)!</div>
+		</div>
+	</div>
+	<div id='main'>
+		<div id="main1" class="mn i"></div>
+		<div id="main2" class="mn i"></div>
+		<div id="main3" class="mn i"></div>
+	</div>
+	<div id="h">
+		<img id="t0" src="img/menu.png" onClick="js:toggleMenue()">
+		<!--
+			color: #999;
+			padding: 5px;
+			font-size: 26px;
+			display: inline-block;
+			border: none;
+			pointer-events: visible;
+			margin-left: 16px;
+			background: url('icon.gif') no-repeat center;
+			<input id="t0" type="text" placeholder="+Antonio Noack" onClick="js:toggleMenue()"></input>
+		-->
+		<input id="search" type="text" placeholder="Search..."></input>
+	</div>
+	<div>
+		<div>Benachrichtigungen</div>
+		<div>Profil</div>
+	</div>
+	<bot>###</bot>
+	<script src="###"></script>
+</body></html>
