@@ -1,7 +1,7 @@
 # RSQGPlus
 A tool to see your G+ profile offline, with the downloaded data from takeout.google.com, in a similar style.
 
-*How to?*
+**How to?**
 
 Download your "Stream in Google+" data from [https://takeout.google.com], then unzip it into some directory where you have at least 10 MB of additional space available.
 
@@ -16,7 +16,7 @@ If you need to stop the program, just use the task manager and kill it. If it's 
 
 Enjoy!
 
-*How can local other phones etc see my profile?*
+**How can local other phones etc see my profile?**
 
 You've to find out your local IP [https://lifehacker.com/how-to-find-your-local-and-external-ip-address-5833108] and type that into the url bar with :8080 as port behind.
 
