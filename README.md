@@ -20,6 +20,6 @@ Enjoy!
 
 You've to find out your local IP [https://lifehacker.com/how-to-find-your-local-and-external-ip-address-5833108] and type that into the url bar with :8080 as port behind.
 
-*How can I thank you?*
+**How can I thank you?**
 
 Maybe donate a bit, which is equal to making me a little present / paying me a coffee / chocolate bar :)
