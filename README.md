@@ -15,7 +15,7 @@ Enjoy!
 
 **How can local other phones etc see my profile?**
 
-You've to find out [your local IP](https://lifehacker.com/how-to-find-your-local-and-external-ip-address-5833108) and type that into the url bar with :8080 as port behind.
+You've to find out [your local IP](https://lifehacker.com/how-to-find-your-local-and-external-ip-address-5833108) and type that into the url bar with :8080 (or the port you selected) as port behind.
 
 **How can I change the directory of my data?**
 
