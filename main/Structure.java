@@ -129,6 +129,11 @@ public class Structure {
 	}
 	
 	public void writeConfig(){
+		
+		if(cacheFile == null){
+			cacheFile = new File(sourceFile, "cache");
+		}
+		
 		try {
 			FileWriter writer = new FileWriter(configFile);
 			writer.write("Data-Location: "+sourceFile.getAbsolutePath()+"\n");
