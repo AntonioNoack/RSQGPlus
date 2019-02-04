@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
+import main.Main.State;
 import main.json.Creator;
 import main.json.JSONLoader;
 import main.json.JSONLoader.Node;
@@ -237,7 +238,16 @@ public class Server {
 		out.write(',');
 		out.write(fromInt(creator.uuid).getBytes());
 		out.write(',');
+		
 		String content = post.getString("content", "");
+		
+		// linked
+		Node link = post.values.get("link");
+		if(link != null){
+			content += "<link>"+base64_encode(link.getString("title", ""))+"/"+link.getString("url", "");
+		}
+		
+		// reshared
 		Node reshare = post.values.get("resharedPost");
 		if(reshare != null){
 			Integer index = structure.resourceMap.get(reshare.getString("resourceName", null));
@@ -245,8 +255,11 @@ public class Server {
 				content += "<reshare>"+index;
 			} else System.out.println(reshare.getString("resourceName", null)+" has no post id :(");
 		}
+		
 		base64_encode(out, content);
 		out.write(',');
+		
+		// images
 		Node album = post.values.get("album");
 		if(album != null){
 			Node media = album.values.get("media");
@@ -402,6 +415,7 @@ public class Server {
 		out.write(("HTTP/1.1 200 OK\r\nServer: RSQGPlus by Antonio Noack\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n").getBytes());
 	}
 	
+	private ServerSocket socket = null;
 	public void listenAlways(){
 		new Thread(new Runnable() {
 			@Override public void run() {
@@ -427,10 +441,12 @@ public class Server {
 					}).start();
 				}
 				
-				ServerSocket socket = null;
 				try {
 					
 					socket = new ServerSocket(port);
+					
+					Main.state = State.READY;
+					Main.repaint();
 					
 					while(true){
 						final Socket client = socket.accept();
@@ -596,6 +612,7 @@ public class Server {
 					
 				} catch (IOException e) {
 					
+					Main.frame.setTitle(e.getMessage());
 					e.printStackTrace();
 					
 				} finally {
@@ -610,5 +627,20 @@ public class Server {
 				
 			}
 		}).start();
+	}
+
+	public void close() {
+		try {
+			socket.close();
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void restart(int port){
+		close();
+		this.port = port;
+		listenAlways();
+		Main.frame.setTitle(Main.title);
 	}
 }

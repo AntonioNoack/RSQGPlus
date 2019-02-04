@@ -20,12 +20,16 @@ import java.util.HashMap;
 
 import javax.swing.JFileChooser;
 
+import main.Main.State;
 import main.csv.ImageDataLoader;
 import main.json.Creator;
 import main.json.JSONLoader;
 import main.json.JSONLoader.Node;
 
 public class Structure {
+	
+	public static final File configFolder = new File(System.getProperty("user.home"), ".AntonioNoack/RSQGPlus/");
+	public static final File configFile = new File(configFolder, "config.txt");
 	
 	public HashMap<String, String> imagePath = new HashMap<>();
 	public HashMap<String, Integer> images = new HashMap<>();
@@ -54,11 +58,9 @@ public class Structure {
 		rImages.put(0, "0");
 		images.put("0", 0);
 		
-		File configFolder = new File(System.getProperty("user.home"), ".AntonioNoack/RSQGPlus/");
-		File configFile = new File(configFolder, "config.txt");
 		if(!configFolder.exists() || !configFile.exists() || configFile.length() < 5){
 			
-			redoConfig(configFolder, configFile);
+			redoConfig();
 			
 		} else {
 			try {
@@ -86,7 +88,15 @@ public class Structure {
 							cacheFile.mkdirs();
 						}
 						
-					} else redoConfig(configFolder, configFile);
+						if(config.get("Port") != null){
+							try {
+								Main.port = Integer.parseInt(config.get("Port"));
+							} catch(NumberFormatException e){
+								Main.port = 8080;
+							}
+						}
+						
+					} else redoConfig();
 				}
 				
 			} catch(IOException e){
@@ -102,17 +112,28 @@ public class Structure {
 		
 	}
 	
-	private void redoConfig(File configFolder, File configFile){
+	private void redoConfig(){
 		
 		configFolder.mkdirs();
 		// write config file...
 		// ask the user for the input...
 		
 		sourceFile = askFile("Select the posts/Beiträge folder!");
+		Main.port = Main.askNumber("What shall the port be? Default: 8080", 8080);
+		if(Main.port < 0 || Main.port > 65535) Main.port = 8080;
+		Main.repaint();
+		
+		writeConfig();
+		cacheFile = new File(sourceFile, "cache");
+		
+	}
+	
+	public void writeConfig(){
 		try {
 			FileWriter writer = new FileWriter(configFile);
 			writer.write("Data-Location: "+sourceFile.getAbsolutePath()+"\n");
-			writer.write("Image-Cache: "+(cacheFile = new File(sourceFile, "cache"))+"\n");
+			writer.write("Image-Cache: "+cacheFile+"\n");
+			writer.write("Port: "+Main.port+"\n");
 			if(!cacheFile.exists()){
 				cacheFile.mkdirs();
 				FileWriter writer2 = new FileWriter(new File(cacheFile, "README.txt"));
@@ -123,7 +144,6 @@ public class Structure {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public String compressGoogleURL(String url){
@@ -240,14 +260,31 @@ public class Structure {
 	
 	private void create() throws IOException {
 		
+		Main.state = State.LOADING_IMAGES;
+		Main.repaint();
+		
 		ImageDataLoader csv = new ImageDataLoader();
 		
 		File loadingDir = new File("/home/antonio/Downloads/tske/Takeout/str/Beiträge/");
 		
-		// first load all images
-		for(File load: loadingDir.listFiles()){
+		File[] files = loadingDir.listFiles();
+		Main.maximal = 0;
+		for(File load: files){
 			String name = load.getAbsolutePath();
 			if(name.endsWith(".csv")){
+				Main.maximal++;
+			}
+		}
+		
+		Main.position = 0;
+		// first load all images
+		for(File load: files){
+			String name = load.getAbsolutePath();
+			if(name.endsWith(".csv")){
+				
+				Main.position++;
+				Main.repaint();
+				
 				int ix = name.indexOf(".", name.indexOf(".")+1);
 				if(ix > -1){
 					csv.load(load);
@@ -261,11 +298,19 @@ public class Structure {
 			}
 		}
 		
+		Main.state = State.LOADING_POSTS;
+		Main.position = 0;
+		Main.maximal = 0;
+		Main.repaint();
+		
 		// then load all posts
 		ArrayList<JSONLoader> posts = new ArrayList<JSONLoader>();
 		for(File load: loadingDir.listFiles()){
 			String name = load.getName();
 			if(name.endsWith(".json")){
+				
+				Main.maximal++;
+				Main.repaint();
 
 				JSONLoader json = new JSONLoader();
 				json.load(load);
@@ -276,7 +321,7 @@ public class Structure {
 			}
 		}
 		
-		registerPostData(posts, true, 3);
+		registerPostData(posts, true, 5);
 		
 		Collections.sort(this.posts, new Comparator<JSONLoader>() {
 			@Override public int compare(JSONLoader s, JSONLoader t) {
@@ -303,6 +348,9 @@ public class Structure {
 		int jsonCount = posts.size();
 		
 		for(JSONLoader json: posts){
+			
+			Main.position++;
+			Main.repaint();
 			
 			registerCreator(json.node.values.get("author"));
 			
@@ -343,7 +391,12 @@ public class Structure {
 		
 		if(--depth < 0) return;
 		if(resharedPosts.size() > 0){
+			
+			Main.maximal += resharedPosts.size();
+			Main.repaint();
+			
 			registerPostData(resharedPosts, doCount, depth);
+			
 		}
 	}
 	
