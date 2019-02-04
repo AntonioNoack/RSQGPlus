@@ -9,7 +9,7 @@ Then compile or download [the program](https://anionoa.phychi.com/+/RSQGPlus8080
 
 It will create a cache folder inside that folder and download all additional needed images, e.g. profile pictures.
 
-When the status switches to "Ready", you can visit http://localhost:<port> and should see your G+ profile on your local computer, even without internet access! :D
+When the status switches to "Ready", you can visit http://localhost:8080 (or the port you selected) and should see your G+ profile on your local computer, even without internet access! :D
 
 Enjoy!
 
