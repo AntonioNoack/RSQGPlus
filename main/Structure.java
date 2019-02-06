@@ -287,9 +287,6 @@ public class Structure {
 			String name = load.getAbsolutePath();
 			if(name.endsWith(".csv")){
 				
-				Main.position++;
-				Main.repaint();
-				
 				int ix = name.indexOf(".", name.indexOf(".")+1);
 				if(ix > -1){
 					csv.load(load);
@@ -300,6 +297,9 @@ public class Structure {
 						imagePath.put(compressGoogleURL(url), imageFileName);
 					} else System.out.println("image "+imageFileName+" not found... crazy...");
 				}// else Metadaten(33).csv, was auch immer das soll...
+				
+				Main.position++;
+				Main.repaint();
 			}
 		}
 		

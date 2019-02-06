@@ -94,7 +94,7 @@ public class StatusFrame extends JLabel {
 		g.setFont(menueFont);
 		
 		Button.draw(g, menueFontMetrics, "Status: "+Main.state.name.replace("#amount", Main.position+"/"+Main.maximal),
-				nColor, 0f, 0f, width, height/3, mx, my);
+				nColor, 0f, 0f, width, height/3, -1, -1);
 		Button.draw(g, menueFontMetrics, "URL: http://localhost:"+Main.port,
 				nnColor, 0f, height/3, width, height/3, mx, my);
 		Button.draw(g, menueFontMetrics, "STOP Server",

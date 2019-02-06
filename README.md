@@ -1,6 +1,8 @@
 # RSQGPlus
 A tool to see your G+ profile offline, with the downloaded data from takeout.google.com, in a similar style.
 
+![alt text](https://raw.githubusercontent.com/AntonioNoack/RSQGPlus/master/raw/img/promoImage.png)
+
 **How to?**
 
 Download your "Stream in Google+" data from [Google Takeout](https://takeout.google.com), then unzip it into some directory where you have at least 10 MB of additional space available.
