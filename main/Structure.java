@@ -270,7 +270,7 @@ public class Structure {
 		
 		ImageDataLoader csv = new ImageDataLoader();
 		
-		File loadingDir = new File("/home/antonio/Downloads/tske/Takeout/str/Beiträge/");
+		File loadingDir = sourceFile;
 		
 		File[] files = loadingDir.listFiles();
 		Main.maximal = 0;
